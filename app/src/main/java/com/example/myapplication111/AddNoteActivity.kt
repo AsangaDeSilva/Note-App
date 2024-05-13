@@ -2,6 +2,8 @@ package com.example.myapplication111
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 
 class AddNoteActivity : AppCompatActivity() {
@@ -9,29 +11,29 @@ class AddNoteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_note)
 
-        btnSave.setOnClickListener{
-            if (editNoteTitle.text.isEmpty()){
+        findViewById<TextView>(R.id.btnSave).setOnClickListener{
+            if (findViewById<TextView>(R.id.editNoteTitle).text.isEmpty()){
                 Toast.makeText(this, "Enter Note Title", Toast.LENGTH_SHORT).show()
-                editNoteTitle.requestFocus()
+                findViewById<TextView>(R.id.editNoteTitle).requestFocus()
             } else
             {
                 val note = Note()
-                note.noteTitle = editNoteTitle.text.toString()
-                if (editNoteDescription.text.isEmpty())
-                    note.noteDescription = editNoteDescription.text.toString()
+                note.noteTitle = findViewById<TextView>(R.id.editNoteTitle).text.toString()
+                if (findViewById<TextView>(R.id.editNoteDescription).text.isEmpty())
+                    note.noteDescription = findViewById<TextView>(R.id.editNoteDescription).text.toString()
                 MainActivity.dbHandler.addNote(this, note)
                 clearEdits()
-                editNoteTitle.requestFocus
+                findViewById<TextView>(R.id.editNoteTitle).requestFocus()
             }
         }
 
-        btnCancel.setOnClickListener{
+        findViewById<TextView>(R.id.btnCancel).setOnClickListener{
             clearEdits()
             finish()
         }
     }
     private fun clearEdits(){
-        editNoteTitle.text.clear()
-        editNoteDescription.text.clear()
+        findViewById<EditText>(R.id.editNoteTitle).text.clear()
+        findViewById<EditText>(R.id.editNoteDescription).text.clear()
     }
 }

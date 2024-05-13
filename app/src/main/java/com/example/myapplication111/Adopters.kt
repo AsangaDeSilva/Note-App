@@ -69,11 +69,11 @@ class NoteAdopter(mCtx:Context, val notes : ArrayList<Note>) : RecyclerView.Adap
                 .setPositiveButton("Update", DialogInterface.OnClickListener{dialog, which ->
                     val isUpdate = MainActivity.dbHandler.updateNote(
                         note.noteID.toString(),
-                        view.editUpNoteTitle.text.toString(),
-                        view.editUpNoteDescription.text.toString())
+                        view.findViewById<TextView>(R.id.editUpNoteTitle).text.toString(),
+                        view.findViewById<TextView>(R.id.editUpNoteDescription).text.toString())
                     if (isUpdate==true){
-                        notes[p1].noteTitle = view.editUpNoteTitle.text.toString()
-                        notes[p1].noteDescription = view.editUpNoteDescription.text.toString()
+                        notes[p1].noteTitle = view.findViewById<TextView>(R.id.editUpNoteTitle).text.toString()
+                        notes[p1].noteDescription = view.findViewById<TextView>(R.id.editUpNoteTitle).text.toString()
                         notifyDataSetChanged()
                         Toast.makeText(mCtx, "Updated Successful", Toast.LENGTH_SHORT).show()
                     }else

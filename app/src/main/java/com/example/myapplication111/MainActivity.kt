@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         viewNotes()
 
-        fab.setOnClickListener{
+        findViewById<TextView>(R.id.fab).setOnClickListener{
             val i = Intent(this, AddNoteActivity::class.java)
             startActivity(i)
         }
